@@ -26,7 +26,7 @@ para.num_fold = 10; % number of fold
 para.data_str = data_str;
 para.num_positive = 20;% number of positives
 para.num_negative = 20;% number of negatives
-para.max_iter = 1000;
+para.max_iter = 10;
 para.dim_reduce = 0; % The reduction ratio of the dimension of the learned metrics, range from [0,1)
 para.gamma = 2;
 para.alphfa = 0.4;
@@ -49,7 +49,8 @@ seed = RandStream('mt19937ar','Seed',1);
 RandStream.setGlobalStream(seed);
 indices = crossvalind('Kfold', num_data, 10);
 
-parfor fold = 1 : num_fold
+% parfor fold = 1 : num_fold
+for fold = 1 : num_fold
     seed2 = RandStream('mt19937ar','Seed',1);
     RandStream.setGlobalStream(seed2);
 
